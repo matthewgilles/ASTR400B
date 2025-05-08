@@ -1,0 +1,546 @@
+%% Beginning of file 'sample7.tex'
+%%
+%% Version 7. Created January 2025.  
+%%
+%% AASTeX v7 calls the following external packages:
+%% times, hyperref, ifthen, hyphens, longtable, xcolor, 
+%% bookmarks, array, rotating, ulem, and lineno 
+%%
+%% RevTeX is no longer used in AASTeX v7.
+%%
+\documentclass[linenumbers,trackchanges,twocolumn]{aastex7}
+%%
+%% This initial command takes arguments that can be used to easily modify 
+%% the output of the compiled manuscript. Any combination of arguments can be 
+%% invoked like this:
+%%
+%% \documentclass[argument1,argument2,argument3,...]{aastex7}
+%%
+%% Six of the arguments are typestting options. They are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  default     : one text column, 10 point font, single spaced (default).
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default.
+%%   linenumbers  : turn on linenumbering. Note this is mandatory for AAS
+%%                  Journal submissions and revisions.
+%%   trackchanges : Shows added text in bold.
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations, acknowledgments,
+%%                  and author contributions for dual anonymous review.
+%%  resetfootnote : Reset footnotes to 1 in the body of the manuscript.
+%%                  Useful when there are a lot of authors and affiliations
+%%		    in the front matter.
+%%   longbib      : Print article titles in the references. This option
+%% 		    is mandatory for PSJ manuscripts.
+%%
+%% Since v6, AASTeX has included \hyperref support. While we have built in 
+%% specific %% defaults into the classfile you can manually override them 
+%% with the \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% The "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% Running header information. A short title on odd pages and 
+%% short author list on even pages. Note that this
+%% information may be modified in production.
+%%\shorttitle{AASTeX v7 Sample article}
+%%\shortauthors{The Terra Mater collaboration}
+%%
+%% Include dates for submitted, revised, and accepted.
+%%\received{February 1, 2025}
+%%\revised{March 1, 2025}
+%%\accepted{\today}
+%%
+%% Indicate AAS Journal the manuscript was submitted to.
+%%\submitjournal{PSJ}
+%% Note that this command adds "Submitted to " the argument.
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Use this command to indicate a subdirectory where figures are located.
+%%\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{Galactic Mergers and Evolution: Stellar Density and Sersic Profile Development Due to Tidal Forces}
+
+%% A significant change from AASTeX v6+ is in the author blocks. Now an email
+%% address is required for each author. This means that each author requires
+%% at least one of the following:
+%%
+%% \author
+%% \affiliation
+%% \email
+%%
+%% If these three commands are not available for each author, the latex
+%% compiler will issue an error and if you force the latex compiler to continue,
+%% it will generate an incomplete pdf.
+%%
+%% Multiple \affiliation commands are allowed and authors can also include
+%% an optional \altaffiliation to indicate a status, i.e. Hubble Fellow. 
+%% while affiliations are indexed as footnotes, altaffiliations are noted with
+%% with a non-numeric footnote that is set away from the numeric \affiliation 
+%% footnotes. NOTE that if an \altaffiliation command is used it must 
+%% come BEFORE the \affiliation call, right after the \author command, in 
+%% order to place the footnotes in the proper location. Because non-numeric
+%% symbols are used, \altaffiliation should be used sparingly.
+%%
+%% In v7 the \author command takes an optional argument which provides 
+%% additional metadata about the author. Authors can provide the 16 digit 
+%% ORCID, the surname (family or last) name, the given (first or fore-) name, 
+%% and a name suffix, e.g. "Jr.". The syntax is:
+%%
+%% \author[orcid=0000-0002-9072-1121,gname=Gregory,sname=Schwarz]{Greg Schwarz}
+%%
+%% This name metadata in not shown, it is only for parsing by the peer review
+%% system so authors can be more easily identified. This name information will
+%% also be sent to the publisher so they can include it in the CROSSREF 
+%% metadata. Including an orcid will hyperlink the author name to the 
+%% author's ORCID page. Note that  during compilation, LaTeX will do some 
+%% limited checking of the format of the ID to make sure it is valid. If 
+%% the "orcid-ID.png" image file is  present or in the LaTeX pathway, the 
+%% ORCID icon will appear next to the authors name.
+%%
+%% Even though emails are now required for each author, the \email does not
+%% produce output in the compiled manuscript unless the optional "show" command
+%% is used. For example,
+%%
+%% \email[show]{greg.schwarz@aas.org}
+%%
+%% All "shown" emails are show in the bottom left of the first page. Due to
+%% space constraints, only a few emails should be shown. 
+%%
+%% To identify a corresponding author, use the \correspondingauthor command.
+%% The command appends "Corresponding Author: " to the argument it appears at
+%% the bottom left of the first page like the output from \email. 
+
+\author[gname='Matthew', sname='Gilles']{Matthew Gilles}
+\affiliation{University of Arizona}
+\email[show]{matthewgilles@arizona.edu}
+\date{May 8, 2025}
+
+%% Use the \collaboration command to identify collaborations. This command
+%% takes an optional argument that is either a number or the word "all"
+%% which tells the compiler how many of the authors above the command to
+%% show. For example "\collaboration[all]{(DELVE Collaboration)}" wil include
+%% all the authors above this command.
+%%
+%% Mark off the abstract in the ``abstract'' environment. 
+
+%% Keywords should appear after the \end{abstract} command. 
+%% The AAS Journals now uses Unified Astronomy Thesaurus (UAT) concepts:
+%% https://astrothesaurus.org
+%% You will be asked to selected these concepts during the submission process
+%% but this old "keyword" functionality is maintained in case authors want
+%% to include these concepts in their preprints.
+%%
+%% You can use the \uat command to link your UAT concepts back its source.
+
+%% From the front matter, we move on to the body of the paper.
+%% Sections are demarcated by \section and \subsection, respectively.
+%% Observe the use of the LaTeX \label
+%% command after the \subsection to give a symbolic KEY to the
+%% subsection for cross-referencing in a \ref command.
+%% You can use LaTeX's \ref and \label commands to keep track of
+%% cross-references to sections, equations, tables, and figures.
+%% That way, if you change the order of any elements, LaTeX will
+%% automatically renumber them.
+
+\begin{abstract}
+    This paper will analyze how the density and intensity of a galaxy
+    changes due to galactic evolution as two galaxies experience a close
+    encounter. Density and intensity are both definite galactic properties
+    that can be used to learn more about a galaxy and how it evolves. By
+    using a N-body simulation of two galaxies from the Local Group, this
+    problem can be computed analytically. The Sersic and surface
+    density profiles can be calculated at certain points during the
+    galactic merger to learn how the galaxies change through the event.
+    During the first close encounter, MW will have a Sersic index of 0.9
+    and a scale length of 5 and M31 will have a Sersic index of 1 and a
+    scale length of 4.5. After the two seperate to their maximum distance,
+    MW will have a Sersic index of 1.5 and a scale length of 2 and M31
+    will have a Sersic index of 2.05 and a scale length of 0.5.
+    These results can be used to help astronomers learn more about how the
+    intensity and density of a galaxy (or set of galaxies) evolve during
+    close encounters.
+\end{abstract}
+
+\keywords{\uat{Local Group}{929} --- \uat{Stellar Disk}{1594} --- \uat{Major Merger}{} --- \uat{Spiral Galaxies}{1560} --- \uat{Sersic Profiles}{}}
+
+\section{Introduction}
+
+The Milky Way Galaxy (MW) and the Andromeda Galaxy (M31) are both
+members of the Local Group. The \textbf{Local Group} is a cluster of
+around fifty galaxies and spans about ten billion light-years and are all
+gravitationally bound. These
+two galaxies (i.e. MW and M31) will eventually undergo a galactic
+merger. This is what is known as a major merger. A \textbf{major merger}
+is a classification of merger event in which the mass of one progenitor is
+no more than three times greater than the other.
+This event will cause both galaxies to undergo serious 
+cosmological changes. One thing that will evolve over the merger
+is the structure of MW and M31. Both galaxies have a stellar disk region
+with their own properties. The \textbf{stellar
+disk} refers to the stars that make up the
+disk  within each galaxy. These disks have their own unique kinematics and
+smaller regions within themselves. However, these disks are found in
+spiral galaxies like MW and M31. \textbf{Spiral galaxies} are galaxies
+with a disk region that forms arms as the galaxy rotates. When MW and
+M31 merge within the next seven billion years, these regions will
+interact with each other and combine. The dynamical forces, namely the
+tidal forces, will influence the result of this merger and the ongoing
+evolution of the two galaxies.
+
+Density is a property of a galaxy that influences many different
+phenomena related to galactic evolution
+\citep{Torrey_Cox_Kewley_Hernquist_2012}. A \textbf{galaxy} is a
+gravitationally bound set of stars, gas, and dust whose
+characteristics and behaviour cannot be explained with Newton's laws
+of gravity \citep{Willman_Strader_2012}. \textbf{Galactic evolution} is
+the process of the galaxy and its components changing over time. By
+observing the surface density of the galaxies as they merge over time we
+can learn about how galactic mergers influence evolution. With how old the
+universe is, it is difficult to see the whole picture that is galactic
+evolution. A galactic merger can hopefully allow us to see how a galaxy
+evolves in a shorter amount of time.
+
+We know that after MW and M31 merge, the merger remnant will have a
+significantly larger radius than the original galaxies
+\citep{van_der_Marel_Besla_Cox_Sohn_Anderson_2012}. With this, the
+surface density after the merger should follow a distribution similar
+to a de Vaucouleurs profile \citep{Brooks_Christensen_2016}. This
+means that the new elliptical merger remnant will have its density
+scale with the radius to the power of a quarter (outside of 1 kpc from
+the centre). Figure 1 shows the particles originating from MW and M31
+respectively after the merger. It can be seen that the shape of the
+merger remnant consisting of MW and M31 should be elliptical when
+viewed face on. In addition, since elliptical galaxies lack a defined disk,
+something must change over the course of the merger as the two spiral
+galaxies combine.
+
+%% The "ht!" tells LaTeX to put the figure "here" first, at the "top" next
+%% and to override the normal way of calculating a float position.
+%% The asterisk after "figure" tells the compiler to span multiple columns
+%% if a two column style is selected.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{van_der_Marel_et_al_Figure.png}
+\caption{The distribution of particles at the end of the N-body simulation (t = 10 Gyr). Scale colour used to represent surface mass density. The centre of mass of each galaxy is at the highest-density position in its particle distribution. This shows that the two galaxies have the same centre of mass and have completely merged. \citep{van_der_Marel_Besla_Cox_Sohn_Anderson_2012}.
+\label{fig:general}}
+\end{figure}
+
+There are several questions relating to the evolution of the surface
+density profiles during the galactic merger. A very good question is
+how the forces acting on the galaxies during the merger change
+their surface density profiles. Hopefully, by analyzing the way the
+galaxy surface density changes throughout this interaction and compare
+it to the initial densities and the density of the merger remnant, we
+can learn more about how galactic mergers and their density profiles
+impact galactic evolution. There is also the question of how the
+merger will impact the form of the two galaxies. As
+aforementioned, the merger remnant should be elliptical. The shape and
+density of the merger remnant could help us learn how to more easily
+identify other similar merger remnants. In the same vein, something
+must happen to the spiral arms of MW and M31 as the galaxies go from a
+spiral classification to an elliptical merger remnant. The tidal
+forces acting on the spiral arms cause them to evolve in such a way
+that the arms lose their definition during the merger. The simplest
+way to attempt to solve any of these questions is to use a simulation
+of the galactic interactions
+\citep{van_der_Marel_Besla_Cox_Sohn_Anderson_2012}.
+
+\section{This Project} \label{sec:style}
+
+The topic of this paper is to investigate the surface density and
+Sersic profiles of MW and M31. The \textbf{Sersic profile} is a
+method used to analyze the surface density of a galaxy by using the
+relation between the galaxy's radius and intensity.
+
+The question I will be answering is how the surface densities and
+Sersic profiles of the disks of MW and M31 evolve over the
+course of the galactic merger.
+
+While galactic mergers result in a new galactic form, the intermediate
+steps are just as important. The density and intensity of stars within
+a galaxy are very important parameters for a galaxy and by calculating
+and analyzing these values during the merger we may be able to see how
+these distributions evolve and are affected by the forces taking place
+in the merger event.
+
+\section{Methodology} \label{sec:style}
+
+In order to answer this question, I will have to complete a number of
+steps using the N-body merger simulation. The N-body simulation is
+referred to as such because it is a simulation modeling "N" number of
+particles used to represent the stars within a galaxy
+\citep{van_der_Marel_Besla_Cox_Sohn_Anderson_2012}. This simulation in
+particular contains the stars for MW, M31, and M33 within all of their
+galaxy components (i.e. halo, disk, and bulge). The simulation
+contains the three dimensional positions and velocities of all these
+particles as well as their mass and position in time. I will be
+looking at surface density and Sersic profiles at various times for
+the disk regions of both MW and M31.
+
+As previously stated, I will look at the evolution of the disk
+(i.e. particle type 2). I would
+like to analyze the two galaxies at specific points in time using the
+LowRes files of the simulation. The LowRes files can be used since
+density is a value that does not depend on the tracking of each
+individual particle within the system. I will look at the initial
+conditions (i.e. snapshot 000), the first close encounter at four
+gigayears (i.e. snapshot 280), and the time they separate after that
+encounter at five and a half gigayears (i.e. snapshot 385). These
+values were found using Figure 2 to look at the separation between MW
+and M31 during the galactic merger.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.35]{MWM31RS.png}
+\caption{Plot showing the radial separation between the centre of mass of MW and M31 in kpc at a given time in Gyr. This shows us exactly when the galaxies have their first close encounter and separation.
+\label{fig:general}}
+\end{figure}
+
+At these times, I will calculate the Sersic profile for each galaxy
+and find the associated Sersic index and scale length that fits best. To do this, I
+will need to first compute the centre of mass of each galaxy for the
+given snapshot and the mass of the relevant component. I will need
+to do this so that I can then find the surface density for the disk
+using the equation below.
+\begin{equation}
+\sigma=\frac{M_{ann}}{\pi(r_n^2-r_{n-1}^2)}
+\end{equation}
+In order to use this equation, we must first create an annulus that
+encloses the majority of the galactic region. With this, you can find
+the sum of the mass enclosed at each annulus then take the difference
+between the current point and the one previous to find the mass at the
+current annulus value. This value is \begin{math}M_{ann}\end{math}.
+\begin{math}r_{n}\end{math} is the current radius from the annulus and
+\begin{math}r_{n-1}\end{math} is the radius in the index before. This
+allows us to calculate our surface density over the entire component of
+the galaxy \begin{math}\sigma\end{math}. With the surface densities, I
+can then calculate the Sersic profiles using the equations below.
+\begin{equation}
+I_o=\frac{L}{\pi h_r^2(2n)!}
+\end{equation}
+\begin{equation}
+I(r)=I_oe^{-(\frac{r}{h_r})^\frac{1}{n}}
+\end{equation}
+\begin{math}L\end{math} is the luminosity of the galaxy component which
+can be found using the mass-to-light ratio and
+\begin{math}h_r\end{math} is the scale length. With those values
+the Sersic profile \begin{math}I(r)\end{math} can be calculated at
+each value of \begin{math}r\end{math}, \begin{math}r\end{math} being
+the distance from the centre of the galaxy in kilo-parsecs.
+\begin{math}n\end{math} is then the Sersic index that best aligns the
+function in Equation (2) to the surface density.
+
+By over-plotting the surface density profile and Sersic profile, I
+can determine which Sersic index is most accurate. I will plot these
+values at all three snapshots for both the disk of each galaxy. A fitting
+function will be used to help optimize the accuracy of the Sersic
+index to help guarantee accuracy.
+
+I will assume that the Sersic index at the start of the simulation
+is one and the scale length to be five. I also expect to see these values change as the
+simulation moves forward in time. The galactic merger will effect the
+density of the stars and thus change the Sersic profiles.
+
+\section{Results} \label{sec:style}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.2]{ResultsV_000.jpg}
+\caption{The initial Sersic profiles and surface density plots of MW and M31. Sersic profiles fitted to the surface densities by varying the Sersic index and mass-to-light ratio. These are the conditions of each galaxy before any close encounters (i.e. t = 0 Gyr).
+\label{fig:general}}
+\end{figure}
+
+Figure 3 represents our initial conditions for the disk regions of MW
+and M31. The surface density profiles were fitted for both galaxies
+using the methods described in Section 3. The Sersic profiles were
+calculated using Equation (3) and used the accepted values for both the Sersic index and scale length. This provides a good baseline moving forward as we know that these values and plots are correct.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.2]{ResultsV_280.jpg}
+\caption{The Sersic profiles and surface density plots of MW and M31 at Snapshot 280. These are the conditions of each galaxy during the first close encounter (i.e. t = 4 Gyr).
+\label{fig:general}}
+\end{figure}
+
+Figure 4 is a similar plot made at about 4 Gyr in the future. This is
+when MW and M31 are undergoing their first close encounter. The plots
+were made using the same methods as Figure 3, except the Sersic index and scale length were left unknown. I used a fitting function, but because the curves are not uniform, the algorithm had some difficulty determining a good fit. Ultimately, the final values for this calculation were checked by eye. We can see that the
+Sersic index has decreased for the MW disk and remained constant for the M31 disk. The scale length of the MW disk remained constant and decreased
+for M31.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.2]{ResultsV_385.jpg}
+\caption{The Sersic profiles and surface density plots of MW and M31 at Snapshot 385. These are the conditions of each galaxy during the maximum seperation following the first close encounter (i.e. t = 5 Gyr).
+\label{fig:general}}
+\end{figure}
+
+Figure 5 is another similar plot made at about 5 Gyr in the future.
+This is when MW and M31 are at their maximum separation after their
+first close encounter. The plots were made using the same methods as
+Figure  4. We can see that the Sersic index has now increased
+for the MW disk and also increased for the M31 disk. The scale length of
+MW and M31 have also both decreased.
+
+\section{Discussion} \label{sec:style}
+
+In Figure 3 we can see initial plots for the Sersic profiles and surface densities of MW and M31. The Sersic index of 1.0 and scale length of 5
+were selected for both galaxies.
+The known value of the Sersic index is one, at least when the
+disks are orientated face on \citep{Pastrav_Popescu_Tuffs_Sansom_2013}.
+This is a proper exponential Sersic profile.
+
+In Figure 4 we can see that the Sersic index of the disk of MW
+decreased to 0.9 and remained constant for M31. For Mw, this represents a
+ten percent decrease. The scale length of MW remains the same and decreased to 4.5. This also represents a ten percent decrease. This is in agreement with the hypothesis I made.
+
+The change in Sersic index represents a change in the intensity of the
+galactic disks over their radius. MW will have a lower brightness
+during the first close encounter of the merger (relative to their initial brightness) and M31 will have the same brightness. The scale length
+describes how the surface intensity drops over the galactic radius. Since
+MW and M31 are spiral galaxies, the scale factor is how many kilo-parsecs
+it takes for the intensity to drop by a factor of e. This means the
+intensity of M31 decreases faster at this time.
+
+It is likely that the values found here are off by a small factor. As
+aforementioned, the calculated fits were not accurate so the values were
+chosen by eye. This means that there may be a value that matches the surface density better by a factor of a hundredth.
+
+In Figure 5 we can see that the Sersic index of the disk of MW
+now increased to 1.5 and increased to 2.05 for M31. This
+represents a sixty-seven percent increase and a one hundred and five percent increase respectively. That means MW experiences a total
+Sersic index increase of fifty percent and M31
+experiences a one hundred and five percent increase over the first five gigayears of
+the merger simulation. This is in agreement with the hypothesis I made.
+
+The change in Sersic index represents a change in the intensity of the
+galactic disks over their radius. MW will have a greater brightness
+after the first close encounter of the merger and M31 will also have a
+higher brightness (both relative to their initial brightness and their
+brightness during the first close encounter).
+
+It is likely that the values found here are off by a small factor. As
+aforementioned, the calculated fits were not accurate so the values were
+chosen by eye. This means that there may be a value that matches the surface density better by a factor of a hundredth.
+
+\section{Conclusions} \label{sec:style}
+
+The goal of this paper is to analyze how the density and intensity of a galaxy
+changes due to galactic evolution as two galaxies experience a close
+encounter. Density and intensity are both definite galactic properties
+that can be used to learn more about a galaxy and how it evolves. By
+using a N-body simulation of two galaxies from the Local Group, this
+problem can be computed analytically. The Sersic and surface
+density profiles can be calculated at certain points during the
+galactic merger to learn how the galaxies change through the event.
+
+It is important to look at both of the results from the time of the first
+close encounter and the subsequent separation together. We can see that
+not only do the Sersic indices change, but so can the scale lengths of the
+galaxies. Both of these values do not change in the same way for each
+galaxy at the same point in time, even if the initial values are the same.
+We can see that they do also change from the first close encounter to
+their maximum separation. Not only this, but it can be concluded that this
+will continue as more close encounters occur before MW and M31 finally
+merge.
+
+This also is how the project could be further expanded. The final result of the
+merger remnant can be analyzed to give a complete picture of how the
+Sersic index and scale length change over the entire merger. It would also
+be beneficial to include the M33 galaxy in the calculations, as it
+interacts with MW and M31 as they merge meaning that it will likely
+affect the results. Another future direction is to include the evolution
+of the bulge, as it will also have a change in its Sersic index and
+surface density as the galaxies merge. There is also a possible influence from the dark-matter halo closer to the galactic edge
+\citep{Takamiya_Sofue_2000}.
+
+\section{Acknowledgments} \label{sec:style}
+
+Thank you to Dr. Besla for the help with looking over my code as I wrote
+it and generated my results. Thank you to Himansh and the other members of
+my coding group for providing feedback on my methods and scope of my
+project. This paper makes use of several pieces of software to calculate
+the results. Astropy was used for units
+\citep{Astropy_Collaberation_2013}, scipy was used for curve fitting
+(http://www.scipy.org/), numpy was used for calculations
+\citep{van_der_Walt_Colbert_Varoquaux_2011}, and matplotlib was used for
+generating the plots \citep{Hunter_2007}.
+
+%% For this sample we use BibTeX plus aasjournalv7.bst to generate the
+%% the bibliography. The sample7.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample7.tex
+%% bibtext sample7
+%% pdflatex sample7.tex
+%% pdflatex sample7.tex
+
+\bibliography{ResearchAssignment7}{}
+\bibliographystyle{aasjournalv7}
+
+%% This command is needed to show the entire author+affiliation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `ResearchAssignment7.tex'.
